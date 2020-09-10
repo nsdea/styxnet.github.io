@@ -53,14 +53,15 @@ body {
 
 /* Right-aligned link */
 .navbar a.right {
-    background-color:darkorchid;
+    background-color:rgb(110, 24, 153);
     color: white;
     float: right;
 }
 
 /* Search Bar */
 .navbar a.search {
-    background-color: rgb(92, 92, 92) 77);
+    background-color: rgb(110, 24, 153);
+    
 }
 /* Login */
 .navbar a.login {
@@ -140,8 +141,61 @@ ul li::before {
 }
 
 .unread {
-      background-color: rgb(124, 89, 49);
+    background-color: rgb(124, 89, 49);
 }
+
+.searchh1 {
+    color:rgb(255, 255, 255);
+}
+
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 600px;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: rgb(34, 34, 34);
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: rgb(110, 24, 153);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: rgb(34, 34, 34);
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
@@ -169,10 +223,21 @@ ul li::before {
   <a href="#" class="active">Home</a>
   <a href="chats.html">Chats</a>
   <a href="index.html">Information</a>
-  <a href="#" class="search">Search</a>
+  <a class="search" onclick="openForm()">Search</a>
   <a href="login.html" class="login">LOGIN</a>
-  <a href="create-account.html" class="right">CREATE ACCOUNT</a>
+  <a href="user/create-account.html" class="right">CREATE ACCOUNT</a>
 </div>
+
+<div class="form-popup" id="searchpopup">
+    <form action="/ction_page.php" class="form-container">
+      <h1 class="searchh1">Search</h1>
+        <input type="text" placeholder="Search StyxNet" name="text" required>
+    
+      <button type="submit" class="btn">Find</button>
+      <button type="submit" class="btn cancel" onclick="closeForm()">Exit</button>
+    </form>
+  </div>
+
 
 <div class="main">
 
@@ -223,6 +288,16 @@ ul li::before {
   <h4><a href="#">↑ jump to top</a></h4>
 
 </div>
+
+<script>
+    function openForm() {
+      document.getElementById("searchpopup").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("searchpopup").style.display = "none";
+    }
+    </script>
 
 </body>
 </html>
